@@ -5,149 +5,239 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Know Your Images - Brain Challenge & Prizes</title>
   <style>
-    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: #f0f4f8; color: #102a43; margin: 0; padding: 12px; text-align: center; }
-    
-    .container { max-width: 420px; margin: 0 auto; }
-    
-    /* Header Styling */
-    .header { 
-      background: linear-gradient(135deg, #002b49 0%, #005691 100%); 
-      color: #fff; 
-      padding: 18px 15px; 
-      border-radius: 12px 12px 0 0; 
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { 
+      background: #0f172a; 
+      color: #1e293b; 
+      margin: 0; 
+      padding: 12px; 
+      text-align: center; 
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .header h3 { margin: 0; color: #00c2ff; font-size: 20px; letter-spacing: 0.5px; }
-    .header p { margin: 4px 0 0 0; font-size: 13px; color: #d0f0ff; }
+    
+    .container { max-width: 440px; width: 100%; margin: 0 auto; }
+    
+    /* Header Styling with MTN Branding */
+    .header { 
+      background: #ffcc00; 
+      color: #000000; 
+      padding: 20px 15px 16px 15px; 
+      border-radius: 16px 16px 0 0; 
+      position: relative;
+      box-shadow: inset 0 -2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mtn-logo {
+      width: 70px;
+      height: 40px;
+      background: #000000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      border: 2px solid #ffcc00;
+    }
+
+    .mtn-logo span {
+      color: #ffcc00;
+      font-weight: 900;
+      font-size: 16px;
+      font-style: italic;
+      letter-spacing: -1px;
+    }
+
+    .header h3 { 
+      margin: 0; 
+      color: #000000; 
+      font-size: 22px; 
+      font-weight: 900;
+      letter-spacing: 0.5px; 
+    }
+    .header p { margin: 4px 0 0 0; font-size: 13px; color: #1a1a1a; font-weight: 600; }
     
     .badge-bar { 
-      background: #ffcc00; 
-      color: #000; 
-      padding: 8px; 
+      background: #000000; 
+      color: #ffcc00; 
+      padding: 10px; 
       font-size: 13px; 
-      font-weight: bold; 
-      border-bottom: 1px solid #e6b800; 
+      font-weight: 800; 
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     }
 
     /* Main Card */
     .card { 
-      background: #fff; 
-      border-radius: 0 0 12px 12px; 
-      padding: 20px 16px; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06); 
+      background: #ffffff; 
+      border-radius: 0 0 16px 16px; 
+      padding: 20px 18px; 
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
     }
     
     /* Prize Banner */
     .prize-banner {
-      background: #eef9f1;
-      border: 1px solid #c3e6cb;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 15px;
-      color: #155724;
-      font-size: 13px;
-      font-weight: bold;
+      background: #fffde7;
+      border: 1.5px dashed #e6b800;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 18px;
+      color: #856404;
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.4;
+      animation: pulse-border 2s infinite;
     }
 
     /* Interactive Puzzle Box */
     .puzzle-box { 
       background: #f8fafc; 
       border: 2px solid #e2e8f0; 
-      border-radius: 10px; 
-      padding: 16px; 
-      margin: 16px 0; 
+      border-radius: 14px; 
+      padding: 18px 16px; 
+      margin: 18px 0; 
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
     }
-    .word-letters { display: flex; justify-content: center; gap: 8px; margin: 14px 0; }
+    .word-letters { display: flex; justify-content: center; gap: 8px; margin: 16px 0; }
     .letter-box { 
-      background: #002b49; 
+      background: #000000; 
       color: #ffcc00; 
-      font-weight: bold; 
-      font-size: 20px; 
-      width: 40px; 
-      height: 40px; 
+      font-weight: 800; 
+      font-size: 22px; 
+      width: 44px; 
+      height: 48px; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.06);
+      border: 1px solid #ffcc00;
     }
     
     .puzzle-input {
       width: 100%;
-      padding: 12px;
-      font-size: 16px;
+      padding: 14px;
+      font-size: 18px;
       text-transform: uppercase;
       text-align: center;
       border: 2px solid #cbd5e1;
-      border-radius: 6px;
+      border-radius: 10px;
       margin-top: 10px;
-      letter-spacing: 2px;
-      font-weight: bold;
+      letter-spacing: 3px;
+      font-weight: 800;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #fff;
+    }
+    .puzzle-input:focus {
+      border-color: #ffcc00;
+      box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.3);
     }
 
     .error-msg {
-      color: #e53e3e;
+      color: #dc2626;
       font-size: 12px;
-      margin-top: 6px;
+      margin-top: 8px;
       display: none;
-      font-weight: bold;
+      font-weight: 700;
     }
     
     /* Action Buttons */
     .btn { 
-      background: #ffcc00; 
-      color: #000; 
-      font-weight: bold; 
+      background: linear-gradient(180deg, #ffcc00 0%, #e6b800 100%); 
+      color: #000000; 
+      font-weight: 800; 
       font-size: 16px; 
-      padding: 14px 20px; 
+      padding: 16px 20px; 
       border: none; 
-      border-radius: 25px; 
+      border-radius: 30px; 
       cursor: pointer; 
       width: 100%; 
       margin-top: 10px; 
       text-transform: uppercase; 
-      transition: background 0.2s;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(230, 184, 0, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .btn:hover { background: #e6b800; }
-    .btn-green { background: #28a745; color: #fff; }
-    .btn-whatsapp { background: #25d366; color: #fff; margin-top: 12px; }
+    .btn:active { transform: scale(0.98); }
+    .btn-green { background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%); color: #fff; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.4); }
+    .btn-whatsapp { background: linear-gradient(180deg, #25d366 0%, #128c7e 100%); color: #fff; margin-top: 12px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4); }
 
-    /* Progress Bar */
-    .progress-container {
-      background: #e2e8f0;
-      border-radius: 10px;
-      height: 16px;
-      width: 100%;
-      margin: 12px 0;
-      overflow: hidden;
+    /* Circular Progress Loader */
+    .circle-loader-container {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 14px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .progress-bar {
-      background: #25d366;
+    .circle-svg {
+      width: 100%;
       height: 100%;
-      width: 0%;
-      transition: width 0.3s ease;
+      transform: rotate(-90deg);
+    }
+    .circle-bg {
+      fill: none;
+      stroke: #e2e8f0;
+      stroke-width: 8;
+    }
+    .circle-progress {
+      fill: none;
+      stroke: #22c55e;
+      stroke-width: 8;
+      stroke-dasharray: 251.2;
+      stroke-dashoffset: 251.2;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+    .circle-text {
+      position: absolute;
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
     }
 
     /* Reviews Section */
-    .comments-section { text-align: left; margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 16px; }
-    .comments-title { font-size: 14px; font-weight: bold; color: #486581; margin-bottom: 12px; }
+    .comments-section { text-align: left; margin-top: 28px; border-top: 2px dashed #e2e8f0; padding-top: 20px; }
+    .comments-title { font-size: 14px; font-weight: 800; color: #334155; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .comments-title span { background: #fffde7; color: #000; border: 1px solid #e6b800; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; }
     .comment { display: flex; gap: 12px; margin-bottom: 14px; font-size: 13px; }
-    .comment img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    .comment-body { background: #f8fafc; padding: 10px 12px; border-radius: 10px; flex: 1; border: 1px solid #f1f5f9; }
-    .comment-author { font-weight: bold; color: #102a43; }
-    .comment-time { font-size: 11px; color: #627d98; margin-top: 4px; }
+    .comment img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid #e2e8f0; }
+    .comment-body { background: #f8fafc; padding: 10px 12px; border-radius: 12px; flex: 1; border: 1px solid #f1f5f9; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+    .comment-author { font-weight: 700; color: #0f172a; font-size: 12.5px; }
+    .comment-text { margin-top: 3px; color: #334155; line-height: 1.35; }
+    .comment-time { font-size: 10.5px; color: #64748b; margin-top: 5px; font-weight: 500; }
 
     /* Modal Pop-up */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 100; }
-    .modal-content { background: #fff; padding: 24px; border-radius: 12px; max-width: 340px; text-align: center; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); justify-content: center; align-items: center; z-index: 100; padding: 16px; }
+    .modal-content { background: #fff; padding: 26px 20px; border-radius: 18px; max-width: 360px; width: 100%; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+
+    /* Animations */
+    @keyframes pulse-border {
+      0% { border-color: #e6b800; box-shadow: 0 0 0 0 rgba(230, 184, 0, 0.3); }
+      70% { border-color: #ffcc00; box-shadow: 0 0 0 6px rgba(230, 184, 0, 0); }
+      100% { border-color: #e6b800; box-shadow: 0 0 0 0 rgba(230, 184, 0, 0); }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <div class="header">
+      <!-- SVG MTN Oval Logo -->
+      <div class="mtn-logo">
+        <span>MTN</span>
+      </div>
       <h3>KNOW YOUR IMAGES</h3>
-      <p>Interactive Image & Word Puzzles</p>
+      <p>MTN Educational Image & Word Puzzles</p>
     </div>
     <div class="badge-bar">
       🏆 Solve Challenge & Win Educational Rewards!
@@ -158,11 +248,11 @@
         🎁 Prize Pool: 1-Day Free Trial + Up to ₦50,000 Airtime & Cash Rewards!
       </div>
 
-      <h2 style="font-size: 18px; margin: 0 0 8px 0; color: #002b49;">Test Your Brain Power 🧠</h2>
-      <p style="font-size: 13px; color: #486581; margin: 0;">Unscramble the letters below to qualify for today's prize draw:</p>
+      <h2 style="font-size: 19px; margin: 0 0 6px 0; color: #0f172a; font-weight: 800;">Test Your Brain Power 🧠</h2>
+      <p style="font-size: 13px; color: #475569; margin: 0;">Unscramble the letters below to qualify for today's prize draw:</p>
       
       <div class="puzzle-box">
-        <div style="font-weight: 600; color: #002b49; font-size: 13px;">Scrambled Word:</div>
+        <div style="font-weight: 700; color: #334155; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Scrambled Word:</div>
         <div class="word-letters">
           <div class="letter-box">E</div>
           <div class="letter-box">R</div>
@@ -170,24 +260,27 @@
           <div class="letter-box">N</div>
           <div class="letter-box">L</div>
         </div>
-        <p style="font-size: 12px; color: #28a745; margin: 0 0 8px 0; font-weight: 500;">Hint: Acquiring new knowledge</p>
+        <p style="font-size: 12.5px; color: #16a34a; margin: 0 0 8px 0; font-weight: 700;">💡 Hint: Acquiring new knowledge</p>
         
-        <input type="text" id="userInput" class="puzzle-input" placeholder="TYPE YOUR ANSWER HERE" maxlength="5">
-        <div id="errorMsg" class="error-msg">Incorrect answer. Try again!</div>
+        <input type="text" id="userInput" class="puzzle-input" placeholder="ENTER YOUR ANSWER" maxlength="5" autocomplete="off">
+        <div id="errorMsg" class="error-msg">❌ Incorrect answer. Try again!</div>
       </div>
 
-      <button class="btn" onclick="solvePuzzle()">SUBMIT ANSWER</button>
+      <button class="btn" onclick="solvePuzzle()">SUBMIT ANSWER 🚀</button>
 
       <!-- User Feedback Section -->
       <div class="comments-section">
-        <div class="comments-title">Recent Winner Reviews (1,248)</div>
+        <div class="comments-title">
+          Recent Winner Reviews
+          <span>2,410 Verified</span>
+        </div>
         
         <!-- Comment 1 -->
         <div class="comment">
           <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&auto=format&fit=crop&q=80" alt="Blessing Adebayo">
           <div class="comment-body">
             <div class="comment-author">Blessing Adebayo (Lagos)</div>
-            <div>I thought it was just a regular puzzle until my ₦5,000 reward bonus arrived! Very fun game for everyone. 🔥</div>
+            <div class="comment-text">I thought it was just a regular puzzle until my ₦5,000 reward bonus arrived! Very fun game for everyone. 🔥</div>
             <div class="comment-time">Just now</div>
           </div>
         </div>
@@ -197,7 +290,7 @@
           <img src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?w=150&auto=format&fit=crop&q=80" alt="Chinedu Okeke">
           <div class="comment-body">
             <div class="comment-author">Chinedu Okeke (Enugu)</div>
-            <div>The 1-day free trial activated immediately on my MTN line after completing the word challenge and sharing. Thank you!</div>
+            <div class="comment-text">The 1-day free trial activated immediately on my MTN line after completing the word challenge and sharing. Thank you!</div>
             <div class="comment-time">3 mins ago</div>
           </div>
         </div>
@@ -207,7 +300,7 @@
           <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80" alt="Fatima Umar">
           <div class="comment-body">
             <div class="comment-author">Fatima Umar (Kaduna)</div>
-            <div>Easiest ₦10,000 airtime I've ever won online! Make sure you finish the 5 WhatsApp shares to get the direct link. 🎉</div>
+            <div class="comment-text">Easiest ₦10,000 airtime I've ever won online! Just shared once on WhatsApp and got the direct link. 🎉</div>
             <div class="comment-time">6 mins ago</div>
           </div>
         </div>
@@ -217,7 +310,7 @@
           <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=150&auto=format&fit=crop&q=80" alt="Ibrahim Abubakar">
           <div class="comment-body">
             <div class="comment-author">Ibrahim Abubakar (Kano)</div>
-            <div>E easy well well! Just solve the word, share to WhatsApp groups, and enter your phone number to claim.</div>
+            <div class="comment-text">E easy well well! Just solve the word, share to WhatsApp, and enter your phone number to claim.</div>
             <div class="comment-time">11 mins ago</div>
           </div>
         </div>
@@ -227,61 +320,60 @@
           <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80" alt="Nkechi Eze">
           <div class="comment-body">
             <div class="comment-author">Nkechi Eze (Port Harcourt)</div>
-            <div>My sister sent me this link on WhatsApp. Unscrambled the word in 5 seconds and got my cash bonus! 💃💃</div>
+            <div class="comment-text">My sister sent me this link on WhatsApp. Unscrambled the word in 5 seconds and got my cash bonus! 💃💃</div>
             <div class="comment-time">15 mins ago</div>
           </div>
         </div>
 
         <!-- Comment 6 -->
         <div class="comment">
-          <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=150&auto=format&fit=crop&q=80" alt="Emeka Nwosu">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Tunde Bakare">
           <div class="comment-body">
-            <div class="comment-author">Emeka Nwosu (Owerri)</div>
-            <div>Tested and trusted! Got the free trial and ₦2,000 extra airtime instantly on my Airtel line.</div>
-            <div class="comment-time">21 mins ago</div>
+            <div class="comment-author">Tunde Bakare (Ibadan)</div>
+            <div class="comment-text">Omo see fast airtime top-up! Shared to my WhatsApp status and the ₦2,000 credit dropped sharp sharp.</div>
+            <div class="comment-time">18 mins ago</div>
           </div>
         </div>
 
         <!-- Comment 7 -->
         <div class="comment">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Babatunde Sanusi">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" alt="Amina Bello">
           <div class="comment-body">
-            <div class="comment-author">Babatunde Sanusi (Ibadan)</div>
-            <div>100% working! Just make sure you use your main mobile data connection so your line registers quickly.</div>
-            <div class="comment-time">28 mins ago</div>
+            <div class="comment-author">Amina Bello (Abuja)</div>
+            <div class="comment-text">I thought it was fake until I tried it myself. Shared on WhatsApp Business and claimed the bonus immediately!</div>
+            <div class="comment-time">22 mins ago</div>
           </div>
         </div>
 
         <!-- Comment 8 -->
         <div class="comment">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&auto=format&fit=crop&q=80" alt="Aisha Bello">
+          <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80" alt="Emeka Nnamdi">
           <div class="comment-body">
-            <div class="comment-author">Aisha Bello (Abuja)</div>
-            <div>Abuja people run oh! Real educational rewards and airtime giveaway. I just received mine now! 🙌</div>
-            <div class="comment-time">35 mins ago</div>
+            <div class="comment-author">Emeka Nnamdi (Asaba)</div>
+            <div class="comment-text">Good promo from MTN. Educational puzzles plus reward money, this is really nice.</div>
+            <div class="comment-time">27 mins ago</div>
           </div>
         </div>
 
         <!-- Comment 9 -->
         <div class="comment">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Funke Akindele">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Yinka Ogundipe">
           <div class="comment-body">
-            <div class="comment-author">Funke Akindele (Abeokuta)</div>
-            <div>Super fast activation. Solved the puzzle, shared with 5 friends, and claimed my trial smoothly!</div>
-            <div class="comment-time">42 mins ago</div>
+            <div class="comment-author">Yinka Ogundipe (Abeokuta)</div>
+            <div class="comment-text">Got my 1-day free trial plus extra 10GB data bonus. Thanks MTN!</div>
+            <div class="comment-time">31 mins ago</div>
           </div>
         </div>
 
         <!-- Comment 10 -->
         <div class="comment">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Usman Garba">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" alt="Osaze Edohen">
           <div class="comment-body">
-            <div class="comment-author">Usman Garba (Sokoto)</div>
-            <div>Very nice initiative. Educational and rewarding at the same time. Got my entry confirmed! 💯</div>
-            <div class="comment-time">50 mins ago</div>
+            <div class="comment-author">Osaze Edohen (Benin City)</div>
+            <div class="comment-text">Super simple. Unscramble, share to 5 people, and cash out your reward. Works 100%!</div>
+            <div class="comment-time">35 mins ago</div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -289,16 +381,23 @@
   <!-- Challenge Modal -->
   <div class="modal" id="winModal">
     <div class="modal-content">
-      <h3 style="color:#002b49; margin-top: 0;">PUZZLE SOLVED! 🎉</h3>
-      <p style="font-size: 13px; color: #333;">Share this challenge with <b>5 WhatsApp contacts/groups</b> to unlock your reward entry!</p>
+      <div style="font-size: 40px; margin-bottom: 8px;">🎉</div>
+      <h3 style="color:#0f172a; margin: 0 0 8px 0; font-size: 20px;">PUZZLE SOLVED!</h3>
+      <p style="font-size: 13.5px; color: #475569; margin: 0 0 14px 0; line-height: 1.4;">Share this challenge to <b>5 WhatsApp contacts or groups</b> to unlock your MTN reward entry!</p>
       
-      <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
+      <!-- Circular Progress Loader -->
+      <div class="circle-loader-container">
+        <svg class="circle-svg" viewBox="0 0 90 90">
+          <circle class="circle-bg" cx="45" cy="45" r="40"></circle>
+          <circle class="circle-progress" id="circleProgress" cx="45" cy="45" r="40"></circle>
+        </svg>
+        <span class="circle-text" id="circleText">0%</span>
       </div>
-      <p style="font-size: 12px; font-weight: bold; color: #486581;" id="shareStatus">Shares Completed: 0 / 5</p>
 
-      <button class="btn btn-whatsapp" onclick="shareWhatsApp()">SHARE ON WHATSAPP</button>
-      <button class="btn btn-green" id="claimBtn" style="display: none;" onclick="claimTrial()">CONTINUE TO CLAIM PRIZE</button>
+      <p style="font-size: 12.5px; font-weight: 800; color: #334155; margin: 0 0 10px 0;" id="shareStatus">Shares Completed: 0 / 5</p>
+
+      <button class="btn btn-whatsapp" id="shareBtn" onclick="shareWhatsApp()">SHARE ON WHATSAPP 📲</button>
+      <button class="btn btn-green" id="claimBtn" style="display: none;" onclick="claimTrial()">CLAIM YOUR REWARD NOW 🎁</button>
     </div>
   </div>
 
@@ -307,7 +406,7 @@
     const OFFER_LINK = "https://kirevoxis.com/cl/9b492bc1c22b0a9b";
     const CORRECT_WORD = "LEARN";
     
-    let shareCount = 0;
+    let shared = false;
 
     function solvePuzzle() {
       const input = document.getElementById('userInput').value.trim().toUpperCase();
@@ -322,23 +421,26 @@
     }
 
     function shareWhatsApp() {
-      const shareText = encodeURIComponent("Hey! Check out this brain puzzle challenge. Solve the word and win ₦50,000 cash rewards and free trial: " + window.location.href);
-      window.open(`https://api.whatsapp.com/send?text=${shareText}`, '_blank');
+      const shareText = encodeURIComponent("Hey! Check out this MTN brain puzzle challenge. Solve the word and win ₦50,000 cash rewards and free trial: " + window.location.href);
+      
+      // whatsapp:// scheme triggers system app picker (WhatsApp / WhatsApp Business)
+      window.location.href = `whatsapp://send?text=${shareText}`;
 
-      if (shareCount < 5) {
-        shareCount++;
-        const percentage = (shareCount / 5) * 100;
-        document.getElementById('progressBar').style.width = percentage + "%";
-        document.getElementById('shareStatus').innerText = `Shares Completed: ${shareCount} / 5`;
-
-        if (shareCount === 5) {
-          document.getElementById('claimBtn').style.display = "block";
-        }
+      if (!shared) {
+        shared = true;
+        
+        // Update SVG circle stroke dashoffset (251.2 total stroke -> 0 stroke offset = 100%)
+        document.getElementById('circleProgress').style.strokeDashoffset = "0";
+        document.getElementById('circleText').innerText = "100%";
+        
+        document.getElementById('shareStatus').innerText = "Shares Completed: 5 / 5";
+        document.getElementById('shareBtn').style.display = "none";
+        document.getElementById('claimBtn').style.display = "block";
       }
     }
 
     function claimTrial() {
-      if (shareCount >= 5) {
+      if (shared) {
         window.location.href = OFFER_LINK;
       }
     }
